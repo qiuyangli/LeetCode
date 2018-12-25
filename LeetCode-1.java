@@ -1,13 +1,15 @@
-public class TestClass {
-    public static void main(String[] args){
-        int a[] = {1,2,4,6};
-        int target = 6;
-        for (int i = 0; i < a.length; i++) {
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[i] + a[j] == target) {
-                    System.out.println(new int[] {i,j});
-                }
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i],i);
+        }
+        for (int j = 0; j < nums.length; j++) {
+            int temp = target - nums[j];
+            if (map.containsKey(temp) && j != map.get(temp)) {
+                return new int[] {j,map.get(temp)};
             }
         }
+        return new int[] {0};
     }
 }
